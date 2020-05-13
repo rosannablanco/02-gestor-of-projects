@@ -1,8 +1,6 @@
 const getDataFromApi = () => {
-  return fetch('')
-    .then((response) => response.json())
-    .then((data) => data);
+  return fetch('../../../api/board.json').then((response) => response.json());
 };
-export default getDataFromApi;
+export default {getDataFromApi};
 
 //# sourceMappingURL=getData.js.map
