@@ -2,7 +2,7 @@
 import dataApi from './services/getData.js';
 //2. import set and get data from local Storage
 import storage from './services/local-storage.js';
-import showList from './showList.js';
+import boardList from './dom/showList.js';
 
 let dataList = [];
 
@@ -11,8 +11,7 @@ const startApp = () => {
     dataList = data.board.list;
     storage.saveLS(dataList);
     storage.getLS(dataList);
-    //showList.paintHtml(dataList);
-    console.log(dataList);
+    boardList.paintHtmlList(dataList);
   });
 };
 

@@ -1,13 +1,14 @@
-import element from './dom/createElement.js';
+import element from './createElement.js';
+import card from './showCard.js';
 // eslint-disable-next-line no-unused-vars
 const mainElement = document.querySelector('.app-board');
+const btnAddColumnElement = document.querySelector('.js-container-plus');
 
-const paintHtml = (list) => {
-  console.log(list);
-
+const paintHtmlList = (list) => {
   //mainElement.innerHTML = '';
   for (let i = 0; i < list.length; i++) {
     const divColumn = element.elementHtml('div', mainElement);
+    mainElement.insertBefore(divColumn, btnAddColumnElement);
     Object.assign(divColumn, {
       className: 'app-list',
       id: i,
@@ -29,7 +30,6 @@ const paintHtml = (list) => {
       type: 'text',
       value: list[i].title,
       title: 'Editar el título de la lista',
-      id: i,
     });
 
     const listOptions = element.elementHtml('div', formTitle);
@@ -68,6 +68,8 @@ const paintHtml = (list) => {
     });
     const iconRight = element.elementHtml('span', rightBtn);
     iconRight.setAttribute('class', 'fas fa-arrow-right');
+    //PARTIAL CARD
+    card.paintHtmlCard(list, i, div);
   }
 }; /*  const buttonAddCard = document.createElement('button');
     Object.assign(buttonAddCard, {
@@ -187,4 +189,6 @@ const paintHtml = (list) => {
     formTitleCard.appendChild(inputTitle);
     divContainerCard.appendChild(formTitleCard);
     inputTitle.addEventListener('change', changeTitle) */
-export default {paintHtml};
+export default {paintHtmlList};
+
+//# sourceMappingURL=showList.js.map

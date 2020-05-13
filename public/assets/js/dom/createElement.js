@@ -3,7 +3,10 @@ const elementHtml = (tag, parent) => {
   parent.appendChild(element);
   return element;
 };
-
-export default {elementHtml};
+const textElementInner = (text) => {
+  const innerText = document.createTextNode(text);
+  return innerText;
+};
+export default {elementHtml, textElementInner};
 
 //# sourceMappingURL=createElement.js.map
