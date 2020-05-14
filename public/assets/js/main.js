@@ -8,12 +8,16 @@ import events from './dom/listenEvent.js';
 let dataList = [];
 
 const startApp = () => {
-  dataApi.getDataFromApi().then((data) => {
-    dataList = data.board.list;
-    storage.saveLS(dataList);
-    storage.getLS(dataList);
+  if (storage.isValid()) {
+    dataList = storage.getLS();
     render();
-  });
+  } else {
+    dataApi.getDataFromApi().then((data) => {
+      dataList = data.board.list;
+      storage.saveLS(dataList);
+      render();
+    });
+  }
 };
 const render = () => {
   boardList.paintHtmlList(dataList);
@@ -27,14 +31,11 @@ const handleClick = (ev) => {
   const dataAction = ev.currentTarget.dataset.action;
   switch (dataAction) {
     case 'add-column':
-      dataList.push(events.addColumnEvent());
+      events.addColumnEvent(dataList);
       break;
     default:
-      return 'error';
+      return false;
   }
-  /* console.log(dataAction);
-  console.log(dataList); */
-
   render();
   storage.saveLS(dataList);
 };

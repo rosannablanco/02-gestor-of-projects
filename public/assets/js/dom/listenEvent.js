@@ -1,10 +1,9 @@
 //list events
-const addColumnEvent = () => {
-  const objectAdd = {
+const addColumnEvent = (data) => {
+  data.push({
     title: 'Título',
     cards: [],
-  };
-  return objectAdd;
+  });
 };
 export default {addColumnEvent};
 
