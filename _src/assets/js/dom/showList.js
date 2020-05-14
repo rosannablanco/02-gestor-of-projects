@@ -1,6 +1,6 @@
 import element from './createElement.js';
 import card from './showCard.js';
-import event from './listenEvent.js';
+
 // eslint-disable-next-line no-unused-vars
 
 const mainElement = document.querySelector('.app-board');
@@ -104,9 +104,6 @@ const paintHtmlList = (list) => {
   btnAddColumn.setAttribute('data-action', 'add-column');
   const spanIconAddColumn = element.elementHtml('span', btnAddColumn);
   spanIconAddColumn.setAttribute('class', 'fas fa-plus');
-
-  //Events
-  //btnAddColumn.addEventListener('click', event.elementEvent);
 };
 
 export default {paintHtmlList};

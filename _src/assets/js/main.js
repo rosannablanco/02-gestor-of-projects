@@ -3,7 +3,7 @@ import dataApi from './services/getData.js';
 //2. import set and get data from local Storage
 import storage from './services/local-storage.js';
 import boardList from './dom/showList.js';
-import events from './dom/listenEvent.js';
+import events from './dom/actionsEvents.js';
 
 let dataList = [];
 
