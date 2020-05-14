@@ -47,10 +47,11 @@ const paintHtmlList = (list) => {
     ///BTN REMOVE COLUMN
     const removeBtn = element.elementHtml('button', listBtns);
     Object.assign(removeBtn, {
-      className: 'btn btn-light text-muted border shadow-sm',
+      className: 'js-remove-column btn btn-light text-muted border shadow-sm',
       title: 'Borrar esta tarjeta',
       id: i,
     });
+    removeBtn.setAttribute('data-action', 'remove-column');
     const iconRemove = element.elementHtml('span', removeBtn);
     iconRemove.setAttribute('class', 'fas fa-trash-alt');
 

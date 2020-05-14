@@ -10,3 +10,5 @@ const removeColumn = (elementId, data) => {
   data.splice(Index, 1);
 };
 export default {addColumn, removeColumn};
+
+//# sourceMappingURL=actionsEvents.js.map

@@ -1,6 +1,6 @@
 import element from './createElement.js';
 import card from './showCard.js';
-import event from './listenEvent.js';
+
 // eslint-disable-next-line no-unused-vars
 
 const mainElement = document.querySelector('.app-board');
@@ -47,10 +47,11 @@ const paintHtmlList = (list) => {
     ///BTN REMOVE COLUMN
     const removeBtn = element.elementHtml('button', listBtns);
     Object.assign(removeBtn, {
-      className: 'btn btn-light text-muted border shadow-sm',
+      className: 'js-remove-column btn btn-light text-muted border shadow-sm',
       title: 'Borrar esta tarjeta',
       id: i,
     });
+    removeBtn.setAttribute('data-action', 'remove-column');
     const iconRemove = element.elementHtml('span', removeBtn);
     iconRemove.setAttribute('class', 'fas fa-trash-alt');
 
@@ -104,9 +105,6 @@ const paintHtmlList = (list) => {
   btnAddColumn.setAttribute('data-action', 'add-column');
   const spanIconAddColumn = element.elementHtml('span', btnAddColumn);
   spanIconAddColumn.setAttribute('class', 'fas fa-plus');
-
-  //Events
-  //btnAddColumn.addEventListener('click', event.elementEvent);
 };
 
 export default {paintHtmlList};
