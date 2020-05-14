@@ -26,6 +26,8 @@ const render = () => {
 const listenEvents = () => {
   addEventsElements('.js-add-column', 'click');
   addEventsElements('.js-remove-column', 'click');
+  addEventsElements('.js-move-left', 'click');
+  addEventsElements('.js-move-right', 'click');
 };
 
 const addEventsElements = (selector, type) => {
@@ -44,6 +46,12 @@ const handleClick = (ev) => {
       break;
     case 'remove-column':
       events.removeColumn(elementSelect, dataList);
+      break;
+    case 'move-left':
+      events.moveColumn(elementSelect, dataList);
+      break;
+    case 'move-right':
+      events.moveColumn(elementSelect, dataList);
       break;
     default:
       return false;

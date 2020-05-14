@@ -58,20 +58,20 @@ const paintHtmlList = (list) => {
     ///BTN MOVE LEFT COLUMN
     const leftBtn = element.elementHtml('button', listBtns);
     Object.assign(leftBtn, {
-      className: 'btn btn-light text-muted border shadow-sm',
+      className: 'js-move-left btn btn-light text-muted border shadow-sm',
       title: 'Mover esta lista hacia la izquierda',
-      id: i,
     });
+    leftBtn.setAttribute('data-action', 'move-left');
     const iconLeft = element.elementHtml('span', leftBtn);
     iconLeft.setAttribute('class', 'fas fa-arrow-left');
 
     ///BTN MOVE RIGHT COLUMN
     const rightBtn = element.elementHtml('button', listBtns);
     Object.assign(rightBtn, {
-      className: 'btn btn-light text-muted border shadow-sm',
+      className: 'js-move-right btn btn-light text-muted border shadow-sm',
       title: 'Mover esta lista hacia la derecha',
-      id: i,
     });
+    rightBtn.setAttribute('data-action', 'move-right');
     const iconRight = element.elementHtml('span', rightBtn);
     iconRight.setAttribute('class', 'fas fa-arrow-right');
 

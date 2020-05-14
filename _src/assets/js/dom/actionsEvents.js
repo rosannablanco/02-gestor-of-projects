@@ -5,12 +5,16 @@ const addColumn = (data) => {
     cards: [],
   });
 };
-const removeColumn = (elementId, data) => {
-  const Index = elementId.form.id;
+const removeColumn = (element, data) => {
+  const Index = element.form.id;
   data.splice(Index, 1);
 };
-const moveColumn = () => {
-  console.log('moviendo columnas');
+const moveColumn = (element, data) => {
+  const actionBtn = element.dataset.action;
+  const Index = element.form.id;
+  const indexObjectMove = actionBtn === 'move-right' ? Index + 1 : Index - 1;
+  const elementMove = data.splice(Index, 1);
+  data.splice(indexObjectMove, 0, elementMove[0]);
 };
 export default {
   addColumn,
