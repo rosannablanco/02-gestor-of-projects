@@ -24,13 +24,17 @@ const render = () => {
   listenEvents();
 };
 const listenEvents = () => {
-  const addColumnBtn = document.querySelector('.js-add-column');
-  addColumnBtn.addEventListener('click', handleClick);
-  const removeColumnBtn = document.querySelectorAll('.js-remove-column');
-  removeColumnBtn.forEach((element) => {
-    element.addEventListener('click', handleClick);
+  addEventsElements('.js-add-column', 'click');
+  addEventsElements('.js-remove-column', 'click');
+};
+
+const addEventsElements = (selector, type) => {
+  const elements = document.querySelectorAll(selector);
+  elements.forEach((element) => {
+    element.addEventListener(type, handleClick);
   });
 };
+
 const handleClick = (ev) => {
   const elementSelect = ev.currentTarget;
   const dataAction = ev.currentTarget.dataset.action;

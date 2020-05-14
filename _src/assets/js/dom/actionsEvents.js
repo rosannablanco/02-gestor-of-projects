@@ -9,4 +9,11 @@ const removeColumn = (elementId, data) => {
   const Index = elementId.form.id;
   data.splice(Index, 1);
 };
-export default {addColumn, removeColumn};
+const moveColumn = () => {
+  console.log('moviendo columnas');
+};
+export default {
+  addColumn,
+  removeColumn,
+  moveColumn,
+};
