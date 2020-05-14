@@ -1,5 +1,6 @@
 import element from './createElement.js';
 import card from './showCard.js';
+import event from './listenEvent.js';
 // eslint-disable-next-line no-unused-vars
 
 const mainElement = document.querySelector('.app-board');
@@ -9,10 +10,9 @@ const paintHtmlList = (list) => {
   for (let i = 0; i < list.length; i++) {
     //CONTAINER COLUMN
     const divColumn = element.elementHtml('div', mainElement);
-    Object.assign(divColumn, {
-      className: 'app-list',
-      id: i,
-    });
+    divColumn.setAttribute('data-id', i);
+    divColumn.setAttribute('class', 'app-list');
+
     //CONTAINER BACKGROUND BLUE
     const div = element.elementHtml('div', divColumn);
     Object.assign(div, {
@@ -94,17 +94,19 @@ const paintHtmlList = (list) => {
   const addColumnContainer = element.elementHtml('div', mainElement);
   Object.assign(addColumnContainer, {
     className: 'js-container-plus',
-    //id: i,
   });
   const btnAddColumn = element.elementHtml('button', addColumnContainer);
   Object.assign(btnAddColumn, {
     type: 'button',
-    className: 'btn btn-light btn-outline-primary btn-sm mr-5 shadow-sm',
+    className: 'js-add-column btn btn-light btn-outline-primary btn-sm mr-5 shadow-sm',
     title: 'Añadir una nueva lista',
-    //id: i,
   });
+  btnAddColumn.setAttribute('data-action', 'add-column');
   const spanIconAddColumn = element.elementHtml('span', btnAddColumn);
   spanIconAddColumn.setAttribute('class', 'fas fa-plus');
+
+  //Events
+  //btnAddColumn.addEventListener('click', event.elementEvent);
 };
 
 export default {paintHtmlList};
