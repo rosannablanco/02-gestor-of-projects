@@ -25,33 +25,40 @@ const render = () => {
 };
 const listenEvents = () => {
   addEventsElements('.js-add-column', 'click');
+  addEventsElements('.js-title-column', 'change');
   addEventsElements('.js-remove-column', 'click');
   addEventsElements('.js-move-left', 'click');
   addEventsElements('.js-move-right', 'click');
+  addEventsElements('.app-list-form', 'submit');
 };
 
 const addEventsElements = (selector, type) => {
   const elements = document.querySelectorAll(selector);
   elements.forEach((element) => {
-    element.addEventListener(type, handleClick);
+    element.addEventListener(type, handleEvent);
   });
 };
 
-const handleClick = (ev) => {
-  const elementSelect = ev.currentTarget;
+const handleEvent = (ev) => {
   const dataAction = ev.currentTarget.dataset.action;
   switch (dataAction) {
     case 'add-column':
       events.addColumn(dataList);
       break;
+    case 'change-title-column':
+      events.changeTitleColumn(ev, dataList);
+      break;
     case 'remove-column':
-      events.removeColumn(elementSelect, dataList);
+      events.removeColumn(ev, dataList);
       break;
     case 'move-left':
-      events.moveColumn(elementSelect, dataList);
+      events.moveColumn(ev, dataList);
       break;
     case 'move-right':
-      events.moveColumn(elementSelect, dataList);
+      events.moveColumn(ev, dataList);
+      break;
+    case 'form-column':
+      events.submitForm(ev);
       break;
     default:
       return false;

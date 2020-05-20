@@ -23,16 +23,19 @@ const paintHtmlList = (list) => {
     Object.assign(formTitle, {
       className: 'app-list-form align-middle p-1 position-relative',
       id: i,
-      name: 'title-task',
     });
+    formTitle.setAttribute('data-action', 'form-column');
+
     const inputTitle = element.elementHtml('input', formTitle);
     Object.assign(inputTitle, {
-      className: 'app-list-input form-control form-control-sm',
+      className: 'js-title-column app-list-input form-control form-control-sm',
       placeholder: 'Tareas importantes',
       type: 'text',
       value: list[i].title,
       title: 'Editar el título de la lista',
     });
+    inputTitle.setAttribute('data-action', 'change-title-column');
+    inputTitle.setAttribute('data-id', i);
     //ICON MENU OF LIST
     const listOptions = element.elementHtml('div', formTitle);
     listOptions.setAttribute('class', 'app-list-options');
@@ -49,9 +52,9 @@ const paintHtmlList = (list) => {
     Object.assign(removeBtn, {
       className: 'js-remove-column btn btn-light text-muted border shadow-sm',
       title: 'Borrar esta tarjeta',
-      id: i,
     });
     removeBtn.setAttribute('data-action', 'remove-column');
+    removeBtn.setAttribute('data-id', i);
     const iconRemove = element.elementHtml('span', removeBtn);
     iconRemove.setAttribute('class', 'fas fa-trash-alt');
 
@@ -62,6 +65,7 @@ const paintHtmlList = (list) => {
       title: 'Mover esta lista hacia la izquierda',
     });
     leftBtn.setAttribute('data-action', 'move-left');
+    leftBtn.setAttribute('data-id', i);
     const iconLeft = element.elementHtml('span', leftBtn);
     iconLeft.setAttribute('class', 'fas fa-arrow-left');
 
@@ -72,13 +76,15 @@ const paintHtmlList = (list) => {
       title: 'Mover esta lista hacia la derecha',
     });
     rightBtn.setAttribute('data-action', 'move-right');
+    rightBtn.setAttribute('data-id', i);
     const iconRight = element.elementHtml('span', rightBtn);
     iconRight.setAttribute('class', 'fas fa-arrow-right');
 
     //PARTIAL CARD -> MODULE SHOWCARD
     card.paintHtmlCard(list, i, div);
 
-    //PARTIAL FOOTER -> BUTTON ADD CARD
+    //PARTIAL FOOTER
+    ///BUTTON ADD CARD
     const addCardBtn = element.elementHtml('button', div);
     Object.assign(addCardBtn, {
       type: 'button',
