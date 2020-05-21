@@ -166,6 +166,10 @@ body {
   color: #fff6;
 }
 
+.app-list:nth-of-type(1) .js-move-left,.app-list:nth-last-of-type(2) .js-move-right {
+  display: none;
+}
+
 .app-menu {
   display: block;
   position: fixed;

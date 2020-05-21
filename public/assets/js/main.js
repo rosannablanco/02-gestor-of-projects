@@ -30,6 +30,7 @@ const listenEvents = () => {
   addEventsElements('.js-move-left', 'click');
   addEventsElements('.js-move-right', 'click');
   addEventsElements('.app-list-form', 'submit');
+  addEventsElements('.js-add-card', 'click');
 };
 
 const addEventsElements = (selector, type) => {
@@ -59,6 +60,9 @@ const handleEvent = (ev) => {
       break;
     case 'form-column':
       events.submitForm(ev);
+      break;
+    case 'add-card':
+      events.addCard(ev, dataList);
       break;
     default:
       return false;

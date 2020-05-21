@@ -14,19 +14,18 @@ const paintHtmlList = (list) => {
     divColumn.setAttribute('class', 'app-list');
 
     //CONTAINER BACKGROUND BLUE
-    const div = element.elementHtml('div', divColumn);
-    Object.assign(div, {
+    const containerForm = element.elementHtml('div', divColumn);
+    Object.assign(containerForm, {
       className: 'p-1 rounded-sm bg-primary shadow',
     });
     ///FORM TITLE COLUMN
-    const formTitle = element.elementHtml('form', div);
-    Object.assign(formTitle, {
+    const formList = element.elementHtml('form', containerForm);
+    Object.assign(formList, {
       className: 'app-list-form align-middle p-1 position-relative',
-      id: i,
     });
-    formTitle.setAttribute('data-action', 'form-column');
+    formList.setAttribute('data-action', 'form-column');
 
-    const inputTitle = element.elementHtml('input', formTitle);
+    const inputTitle = element.elementHtml('input', formList);
     Object.assign(inputTitle, {
       className: 'js-title-column app-list-input form-control form-control-sm',
       placeholder: 'Tareas importantes',
@@ -37,7 +36,7 @@ const paintHtmlList = (list) => {
     inputTitle.setAttribute('data-action', 'change-title-column');
     inputTitle.setAttribute('data-id', i);
     //ICON MENU OF LIST
-    const listOptions = element.elementHtml('div', formTitle);
+    const listOptions = element.elementHtml('div', formList);
     listOptions.setAttribute('class', 'app-list-options');
 
     const iconMenu = element.elementHtml('span', listOptions);
@@ -81,17 +80,18 @@ const paintHtmlList = (list) => {
     iconRight.setAttribute('class', 'fas fa-arrow-right');
 
     //PARTIAL CARD -> MODULE SHOWCARD
-    card.paintHtmlCard(list, i, div);
+    card.paintHtmlCard(list, i, containerForm);
 
     //PARTIAL FOOTER
     ///BUTTON ADD CARD
-    const addCardBtn = element.elementHtml('button', div);
+    const addCardBtn = element.elementHtml('button', containerForm);
     Object.assign(addCardBtn, {
       type: 'button',
-      className: 'ml-1 btn btn-primary btn-sm text-white-50',
+      className: 'js-add-card ml-1 btn btn-primary btn-sm text-white-50',
       title: 'Añadir una nueva tarjeta',
-      id: i,
     });
+    addCardBtn.dataset.id = i;
+    addCardBtn.dataset.action = 'add-card';
     const iconAddCard = element.elementHtml('span', addCardBtn);
     iconAddCard.setAttribute('class', 'fas fa-plus');
     addCardBtn.appendChild(element.textElementInner(' Añadir otra tarjeta'));
