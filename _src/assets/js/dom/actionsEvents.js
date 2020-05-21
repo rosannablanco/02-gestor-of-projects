@@ -5,7 +5,7 @@ const getIdElement = (ev) => {
   return idElement;
 };
 
-//list events
+//LIST EVENTS
 const addColumn = (data) => {
   data.push({
     title: 'Título',
@@ -44,6 +44,23 @@ const submitForm = (ev) => {
   ev.preventDefault();
 };
 
+//CARD EVENTS
+const moveUp = (ev, data) => {
+  const dataId = getIdElement(ev);
+  const element = ev.currentTarget;
+  const indexList = parseInt(element.parentNode.dataset.id);
+  const listSelect = data[indexList];
+  const cardMove = listSelect.cards.splice(dataId, 1);
+  listSelect.cards.splice(dataId - 1, 0, cardMove[0]);
+};
+const moveDown = (ev, data) => {
+  const dataId = getIdElement(ev);
+  const element = ev.currentTarget;
+  const indexList = parseInt(element.parentNode.dataset.id);
+  const listSelect = data[indexList];
+  const cardMove = listSelect.cards.splice(dataId, 1);
+  listSelect.cards.splice(dataId + 1, 0, cardMove[0]);
+};
 export default {
   addCard,
   addColumn,
@@ -51,4 +68,6 @@ export default {
   moveColumn,
   removeColumn,
   submitForm,
+  moveUp,
+  moveDown,
 };

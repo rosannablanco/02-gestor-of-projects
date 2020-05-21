@@ -31,6 +31,8 @@ const listenEvents = () => {
   addEventsElements('.js-move-right', 'click');
   addEventsElements('.app-list-form', 'submit');
   addEventsElements('.js-add-card', 'click');
+  addEventsElements('.js-btn-up', 'click');
+  addEventsElements('.js-btn-down', 'click');
 };
 
 const addEventsElements = (selector, type) => {
@@ -64,6 +66,13 @@ const handleEvent = (ev) => {
     case 'add-card':
       events.addCard(ev, dataList);
       break;
+    case 'move-up':
+      events.moveUp(ev, dataList);
+      break;
+    case 'move-down':
+      events.moveDown(ev, dataList);
+      break;
+
     default:
       return false;
   }

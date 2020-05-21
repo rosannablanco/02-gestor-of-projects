@@ -7,7 +7,7 @@ const paintHtmlCard = (list, index, parent) => {
     Object.assign(articleCard, {
       className: 'js-card app-card m-1 mb-2 p-2 bg-white rounded-sm app-cursor-pointer shadow-sm',
       title: 'Abrir la tarjeta',
-      id: i,
+      id: index,
     });
     //TAGS
     const containerTag = element.elementHtml('div', articleCard);
@@ -37,14 +37,17 @@ const paintHtmlCard = (list, index, parent) => {
     //Buttons move up/down
     const containerBtns = element.elementHtml('div', articleCard);
     containerBtns.setAttribute('class', 'app-card-btns btn-group-vertical btn-group-sm');
+    containerBtns.setAttribute('data-id', index);
 
     //Up
     const btnUp = element.elementHtml('button', containerBtns);
     Object.assign(btnUp, {
       type: 'button',
-      className: 'btn btn-light text-muted border shadow-sm app-card-move-up',
+      className: 'js-btn-up btn btn-light text-muted border shadow-sm app-card-move-up',
       title: 'Mover esta tarjeta hacia arriba',
     });
+    btnUp.dataset.id = i;
+    btnUp.dataset.action = 'move-up';
     const iconUp = element.elementHtml('span', btnUp);
     iconUp.setAttribute('class', 'fas fa-arrow-up');
 
@@ -52,9 +55,11 @@ const paintHtmlCard = (list, index, parent) => {
     const btnDown = element.elementHtml('button', containerBtns);
     Object.assign(btnDown, {
       type: 'button',
-      className: 'btn btn-light text-muted border shadow-sm app-card-move-down',
+      className: 'js-btn-down btn btn-light text-muted border shadow-sm app-card-move-down',
       title: 'Mover esta tarjeta hacia abajo',
     });
+    btnDown.dataset.id = i;
+    btnDown.dataset.action = 'move-down';
     const iconDown = element.elementHtml('span', btnDown);
     iconDown.setAttribute('class', 'fas fa-arrow-down');
   }

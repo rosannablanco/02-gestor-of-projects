@@ -38,6 +38,10 @@ body {
   opacity: 1;
 }
 
+.app-card:nth-of-type(1) .js-btn-up,.app-card:nth-last-of-type(1) .js-btn-down {
+  display: none;
+}
+
 .app-edit {
   display: block;
   overflow-y: auto;

@@ -1,18 +1,23 @@
 @import './variables';
 
 .app-card {
-    position: relative;
-    cursor: pointer;
-  
-    &-btns {
-      position: absolute;
-      top: 0.25rem;
-      right: 0.25rem;
-      opacity: 0;
-      transition: $transitions-time opacity ease-in-out;
-    }
-  
-    &:hover &-btns {
-      opacity: 1;
-    }
+  position: relative;
+  cursor: pointer;
+
+  &-btns {
+    position: absolute;
+    top: 0.25rem;
+    right: 0.25rem;
+    opacity: 0;
+    transition: $transitions-time opacity ease-in-out;
   }
+
+  &:hover &-btns {
+    opacity: 1;
+  }
+
+  &:nth-of-type(1) .js-btn-up,
+  &:nth-last-of-type(1) .js-btn-down {
+    display: none;
+  }
+}
