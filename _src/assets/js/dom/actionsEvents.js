@@ -13,17 +13,22 @@ const addColumn = (data) => {
   });
 };
 const changeTitleColumn = (ev, data) => {
+  ev.preventDefault();
+  //console.log(ev.which);
   const dataId = getIdElement(ev);
   const element = ev.currentTarget;
   data[dataId].title = element.value;
 };
 const removeColumn = (ev, data) => {
+  ev.preventDefault();
   const dataId = getIdElement(ev);
+  data.splice(dataId, 1);
   if (ev.clientX !== 0) {
     data.splice(dataId, 1);
   }
 };
 const moveColumn = (ev, data) => {
+  ev.preventDefault();
   const dataId = getIdElement(ev);
   const element = ev.currentTarget;
   const actionBtn = element.dataset.action;
@@ -46,6 +51,7 @@ const submitForm = (ev) => {
 
 //CARD EVENTS
 const moveUp = (ev, data) => {
+  ev.stopPropagation();
   const dataId = getIdElement(ev);
   const element = ev.currentTarget;
   const indexList = parseInt(element.parentNode.dataset.id);
@@ -54,12 +60,20 @@ const moveUp = (ev, data) => {
   listSelect.cards.splice(dataId - 1, 0, cardMove[0]);
 };
 const moveDown = (ev, data) => {
+  ev.stopPropagation();
   const dataId = getIdElement(ev);
   const element = ev.currentTarget;
   const indexList = parseInt(element.parentNode.dataset.id);
   const listSelect = data[indexList];
   const cardMove = listSelect.cards.splice(dataId, 1);
   listSelect.cards.splice(dataId + 1, 0, cardMove[0]);
+};
+//GET DATA FROM CARD
+const getCard = (ev, data) => {
+  const listId = parseInt(ev.currentTarget.parentNode.parentNode.dataset.id);
+  const cardId = ev.currentTarget.id;
+  const cardSelect = data[listId].cards[cardId];
+  return cardSelect;
 };
 export default {
   addCard,
@@ -70,4 +84,6 @@ export default {
   submitForm,
   moveUp,
   moveDown,
+  //get data Card for modal
+  getCard,
 };

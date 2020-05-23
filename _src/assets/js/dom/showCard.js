@@ -7,8 +7,9 @@ const paintHtmlCard = (list, index, parent) => {
     Object.assign(articleCard, {
       className: 'js-card app-card m-1 mb-2 p-2 bg-white rounded-sm app-cursor-pointer shadow-sm',
       title: 'Abrir la tarjeta',
-      id: index,
+      id: i,
     });
+    articleCard.setAttribute('data-action', 'open-card');
     //TAGS
     const containerTag = element.elementHtml('div', articleCard);
     listCards[i].tags.forEach((tag) => {

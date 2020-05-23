@@ -45,6 +45,7 @@ const paintHtmlList = (list) => {
     //CONTAINER BUTTONS OPTIONS MENU LIST
     const listBtns = element.elementHtml('div', listOptions);
     listBtns.setAttribute('class', 'app-list-btns btn-group btn-group-sm');
+    listBtns.setAttribute('data-action', 'container-btn-column');
 
     ///BTN REMOVE COLUMN
     const removeBtn = element.elementHtml('button', listBtns);

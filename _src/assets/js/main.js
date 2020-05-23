@@ -1,9 +1,8 @@
-//1. import data from file json
 import dataApi from './services/getData.js';
-//2. import set and get data from local Storage
 import storage from './services/local-storage.js';
 import boardList from './dom/showList.js';
 import events from './dom/actionsEvents.js';
+import edit from './dom/edit.js';
 
 let dataList = [];
 
@@ -25,7 +24,7 @@ const render = () => {
 };
 const listenEvents = () => {
   addEventsElements('.js-add-column', 'click');
-  addEventsElements('.js-title-column', 'change');
+  addEventsElements('.js-title-column', 'blur');
   addEventsElements('.js-remove-column', 'click');
   addEventsElements('.js-move-left', 'click');
   addEventsElements('.js-move-right', 'click');
@@ -33,6 +32,7 @@ const listenEvents = () => {
   addEventsElements('.js-add-card', 'click');
   addEventsElements('.js-btn-up', 'click');
   addEventsElements('.js-btn-down', 'click');
+  addEventsElements('.js-card', 'click');
 };
 
 const addEventsElements = (selector, type) => {
@@ -72,7 +72,9 @@ const handleEvent = (ev) => {
     case 'move-down':
       events.moveDown(ev, dataList);
       break;
-
+    case 'open-card':
+      edit.openCard(ev, dataList);
+      break;
     default:
       return false;
   }
