@@ -48,12 +48,7 @@ gulp.task('styles', function (done) {
         beautify: true,
       })
     )
-    .pipe(
-      autoprefixer({
-        browsers: ['last 2 versions', 'ie >= 10'],
-        cascade: false,
-      })
-    )
+    .pipe(autoprefixer())
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(config.scss.dest))
     .pipe(browserSync.reload({stream: true}));
@@ -130,12 +125,7 @@ gulp.task('styles-dist', function (done) {
         beautify: false,
       })
     )
-    .pipe(
-      autoprefixer({
-        browsers: ['last 2 versions', 'ie >= 10'],
-        cascade: false,
-      })
-    )
+    .pipe(autoprefixer())
     .pipe(gulp.dest(config.scss.dist));
   done();
 });

@@ -8,15 +8,15 @@ body {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
   height: 100vh;
 }
 
 .app-board {
   -webkit-box-flex: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   overflow-x: auto;
 }
 
@@ -47,12 +47,12 @@ body {
   overflow-y: auto;
   background-color: #0006;
   -webkit-animation: edit-close 0.5s forwards;
-  animation: edit-close 0.5s forwards;
+          animation: edit-close 0.5s forwards;
 }
 
 .app-edit.show {
   -webkit-animation: edit-show 0.5s forwards;
-  animation: edit-show 0.5s forwards;
+          animation: edit-show 0.5s forwards;
 }
 
 .app-edit-title {
@@ -102,7 +102,7 @@ body {
 
 .app-header-search:focus {
   -webkit-box-shadow: none;
-  box-shadow: none;
+          box-shadow: none;
 }
 
 .app-list {
@@ -116,8 +116,8 @@ body {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: start;
-  -ms-flex-align: start;
-  align-items: flex-start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
 .app-list-btns {
