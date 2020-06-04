@@ -14,10 +14,11 @@ const rendeCard = (card) => {
   titleCardElement.value = card.title;
   const descriptionCardElement = document.querySelector('.app-edit-textarea');
   descriptionCardElement.value = card.description;
-
   renderTags(card.tags);
 };
 const renderTags = (tags) => {
+  console.log(tags);
+
   const containerTags = document.querySelector('.js-tags');
   containerTags.innerHTML = '';
   tags.forEach((tag) => {

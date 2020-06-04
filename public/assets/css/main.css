@@ -158,6 +158,10 @@ body {
   color: #fff6;
 }
 
+.app-list-input::-moz-placeholder {
+  color: #fff6;
+}
+
 .app-list-input:-ms-input-placeholder {
   color: #fff6;
 }

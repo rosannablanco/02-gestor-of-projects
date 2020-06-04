@@ -22,7 +22,6 @@ const changeTitleColumn = (ev, data) => {
 const removeColumn = (ev, data) => {
   ev.preventDefault();
   const dataId = getIdElement(ev);
-  data.splice(dataId, 1);
   if (ev.clientX !== 0) {
     data.splice(dataId, 1);
   }
